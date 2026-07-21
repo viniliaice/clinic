@@ -55,6 +55,76 @@ const DEFAULT_SEED_DATABASE = {
       phone: "+252 61 222 3333",
       address: "Bula Hubey, Mogadishu",
       emergency: "Yusuf Farah (Son - +252 61 222 4444)"
+    },
+    {
+      id: "PAT-2026-0006",
+      name: "Hassan Ibrahim Abdi",
+      gender: "male",
+      dob: "1975-07-20",
+      age: 51,
+      phone: "+252 61 666 7890",
+      address: "Hamar Weyne, Mogadishu",
+      emergency: "Amina Ibrahim (Daughter - +252 61 666 7891)"
+    },
+    {
+      id: "PAT-2026-0007",
+      name: "Zahra Mohamed Hassan",
+      gender: "female",
+      dob: "2005-12-08",
+      age: 21,
+      phone: "+254 702 555 123",
+      address: "Westlands, Nairobi",
+      emergency: "Mohamed Hassan (Father - +254 702 555 124)"
+    },
+    {
+      id: "PAT-2026-0008",
+      name: "Khalid Yusuf Omar",
+      gender: "male",
+      dob: "1988-03-14",
+      age: 38,
+      phone: "+966 50 234 5678",
+      address: "Al-Khobar, Saudi Arabia",
+      emergency: "Fatima Yusuf (Wife - +966 50 234 5679)"
+    },
+    {
+      id: "PAT-2026-0009",
+      name: "Amira Abdullah Hassan",
+      gender: "female",
+      dob: "2015-09-22",
+      age: 11,
+      phone: "+252 90 888 9999",
+      address: "Mogadishu Central",
+      emergency: "Abdullah Hassan (Father - +252 90 888 9998)"
+    },
+    {
+      id: "PAT-2026-0010",
+      name: "Omar Farah Mohamed",
+      gender: "male",
+      dob: "1970-05-30",
+      age: 56,
+      phone: "+254 722 666 777",
+      address: "Industrial Area, Nairobi",
+      emergency: "Farah Omar (Son - +254 722 666 778)"
+    },
+    {
+      id: "PAT-2026-0011",
+      name: "Noor Abdi Hassan",
+      gender: "female",
+      dob: "1992-11-05",
+      age: 34,
+      phone: "+252 61 999 0001",
+      address: "Eastleigh, Mogadishu",
+      emergency: "Hassan Abdi (Brother - +252 61 999 0002)"
+    },
+    {
+      id: "PAT-2026-0012",
+      name: "Ali Mohamed Salim",
+      gender: "male",
+      dob: "2008-02-17",
+      age: 18,
+      phone: "+966 50 345 6789",
+      address: "Dammam, Saudi Arabia",
+      emergency: "Mohamed Salim (Father - +966 50 345 6780)"
     }
   ],
   visits: [
@@ -76,10 +146,11 @@ const DEFAULT_SEED_DATABASE = {
       prescriptions: [
         { drug: "Amlodipine 5mg", dosage: "5mg", frequency: "Once Daily", duration: "30 days" }
       ],
-      labOrdered: "Lipid Profile, Renal Function Test",
+      labOrdered: "Lipid Profile, Renal Function Test, Fasting Blood Glucose",
       labResults: [
         { testName: "Serum Cholesterol", value: "220 mg/dL", range: "70 - 200 mg/dL", technician: "Khadra Yusuf", status: "completed", date: "2026-06-02" },
-        { testName: "Serum Creatinine", value: "0.9 mg/dL", range: "0.6 - 1.2 mg/dL", technician: "Khadra Yusuf", status: "completed", date: "2026-06-02" }
+        { testName: "Serum Creatinine", value: "0.9 mg/dL", range: "0.6 - 1.2 mg/dL", technician: "Khadra Yusuf", status: "completed", date: "2026-06-02" },
+        { testName: "Fasting Blood Glucose", value: "110 mg/dL", range: "70 - 100 mg/dL (HIGH)", technician: "Khadra Yusuf", status: "completed", date: "2026-06-02" }
       ]
     },
     {
@@ -101,9 +172,10 @@ const DEFAULT_SEED_DATABASE = {
         { drug: "Amoxicillin Susp 250mg/5ml", dosage: "5ml", frequency: "Three times daily", duration: "7 days" },
         { drug: "Paracetamol Susp 120mg/5ml", dosage: "7.5ml", frequency: "As needed (SOS)", duration: "4 days" }
       ],
-      labOrdered: "Complete Blood Count",
+      labOrdered: "Complete Blood Count, Throat Culture",
       labResults: [
-        { testName: "WBC count", value: "14.2 x10^9/L", range: "4.0 - 11.0 x10^9/L (HIGH)", technician: "Khadra Yusuf", status: "completed", date: "2026-06-10" }
+        { testName: "WBC count", value: "14.2 x10^9/L", range: "4.0 - 11.0 x10^9/L (HIGH)", technician: "Khadra Yusuf", status: "completed", date: "2026-06-10" },
+        { testName: "Throat Culture", value: "Streptococcus pyogenes", range: "Negative", technician: "Lab Tech Abdi", status: "completed", date: "2026-06-11" }
       ]
     },
     {
@@ -122,10 +194,118 @@ const DEFAULT_SEED_DATABASE = {
       treatment: "Awaiting Rapid Malaria Diagnostic and CBC reports.",
       notes: "Patient isolated temporarily. Hydrating saline administered.",
       prescriptions: [],
-      labOrdered: "Malaria Rapid Test, Complete Blood Count",
+      labOrdered: "Malaria Rapid Test, Complete Blood Count, Hepatic Panel",
       labResults: [
-        { testName: "Malaria Rapid Test", value: "", range: "Negative", technician: "", status: "pending", date: "" },
-        { testName: "Complete Blood Count", value: "", range: "Routine profile", technician: "", status: "pending", date: "" }
+        { testName: "Malaria Rapid Test", value: "Positive", range: "Negative", technician: "Lab Tech Hassan", status: "completed", date: "2026-06-12" },
+        { testName: "Complete Blood Count", value: "WBC 16.5 x10^9/L", range: "Routine profile", technician: "Lab Tech Hassan", status: "completed", date: "2026-06-12" },
+        { testName: "Hemoglobin", value: "13.2 g/dL", range: "13.5 - 17.5 g/dL (LOW)", technician: "Lab Tech Hassan", status: "completed", date: "2026-06-12" }
+      ]
+    },
+    {
+      visitNo: "VST-1004",
+      patientId: "PAT-2026-0006",
+      dateTime: "2026-06-11T14:30",
+      doctor: "Dr. Sarah Ahmed",
+      weight: 88,
+      height: 178,
+      bmi: 27.8,
+      bmiClass: "Overweight",
+      bp: "145/95",
+      temp: 37.0,
+      symptoms: "Chest pain on exertion, shortness of breath, persistent cough.",
+      diagnosis: "Hypertension with Cardiac Risk",
+      treatment: "Lisinopril 10mg daily, Atorvastatin 20mg at night.",
+      notes: "Refer to cardiology. Schedule EKG and stress test.",
+      prescriptions: [
+        { drug: "Lisinopril 10mg", dosage: "10mg", frequency: "Once Daily", duration: "30 days" },
+        { drug: "Atorvastatin 20mg", dosage: "20mg", frequency: "Once Daily at night", duration: "30 days" }
+      ],
+      labOrdered: "Lipid Panel, ECG, Troponin Test, Complete Blood Count",
+      labResults: [
+        { testName: "Total Cholesterol", value: "265 mg/dL", range: "< 200 mg/dL (HIGH)", technician: "Khadra Yusuf", status: "completed", date: "2026-06-12" },
+        { testName: "LDL Cholesterol", value: "180 mg/dL", range: "< 100 mg/dL (HIGH)", technician: "Khadra Yusuf", status: "completed", date: "2026-06-12" },
+        { testName: "HDL Cholesterol", value: "35 mg/dL", range: "> 40 mg/dL (LOW)", technician: "Khadra Yusuf", status: "completed", date: "2026-06-12" },
+        { testName: "Troponin", value: "Negative", range: "Negative", technician: "Lab Tech Abdi", status: "completed", date: "2026-06-12" }
+      ]
+    },
+    {
+      visitNo: "VST-1005",
+      patientId: "PAT-2026-0007",
+      dateTime: "2026-06-13T11:00",
+      doctor: "Dr. Abdirahman Omar",
+      weight: 58,
+      height: 165,
+      bmi: 21.3,
+      bmiClass: "Normal",
+      bp: "118/76",
+      temp: 36.8,
+      symptoms: "Heavy menstrual bleeding, fatigue, dizziness, pale appearance.",
+      diagnosis: "Iron Deficiency Anemia",
+      treatment: "Ferrous Sulfate 325mg, Vitamin B12 supplements.",
+      notes: "Dietary counseling on iron-rich foods. Re-test in 6 weeks.",
+      prescriptions: [
+        { drug: "Ferrous Sulfate 325mg", dosage: "325mg", frequency: "Twice Daily", duration: "60 days" },
+        { drug: "Vitamin B12 1000mcg", dosage: "1000mcg", frequency: "Weekly IM injection", duration: "4 weeks" }
+      ],
+      labOrdered: "Complete Blood Count, Iron Panel, Thyroid Profile",
+      labResults: [
+        { testName: "Hemoglobin", value: "8.5 g/dL", range: "12.0 - 16.0 g/dL (LOW)", technician: "Lab Tech Hassan", status: "completed", date: "2026-06-13" },
+        { testName: "Serum Iron", value: "45 mcg/dL", range: "60 - 170 mcg/dL (LOW)", technician: "Lab Tech Hassan", status: "completed", date: "2026-06-13" },
+        { testName: "Ferritin", value: "12 ng/mL", range: "30 - 400 ng/mL (LOW)", technician: "Lab Tech Hassan", status: "completed", date: "2026-06-13" },
+        { testName: "TSH", value: "2.1 mIU/L", range: "0.4 - 4.0 mIU/L", technician: "Lab Tech Hassan", status: "completed", date: "2026-06-13" }
+      ]
+    },
+    {
+      visitNo: "VST-1006",
+      patientId: "PAT-2026-0008",
+      dateTime: "2026-06-14T10:15",
+      doctor: "Dr. Sarah Ahmed",
+      weight: 92,
+      height: 182,
+      bmi: 27.8,
+      bmiClass: "Overweight",
+      bp: "135/88",
+      temp: 37.1,
+      symptoms: "Increased thirst, frequent urination, unexplained weight loss.",
+      diagnosis: "Type 2 Diabetes Mellitus",
+      treatment: "Metformin 500mg, Glipizide 5mg, dietary modifications.",
+      notes: "Patient referred to endocrinology for comprehensive management.",
+      prescriptions: [
+        { drug: "Metformin 500mg", dosage: "500mg", frequency: "Three times daily", duration: "30 days" },
+        { drug: "Glipizide 5mg", dosage: "5mg", frequency: "Once Daily before breakfast", duration: "30 days" }
+      ],
+      labOrdered: "Fasting Blood Glucose, HbA1c, Lipid Panel, Kidney Function",
+      labResults: [
+        { testName: "Fasting Blood Glucose", value: "285 mg/dL", range: "70 - 100 mg/dL (HIGH)", technician: "Khadra Yusuf", status: "completed", date: "2026-06-14" },
+        { testName: "HbA1c", value: "9.8%", range: "< 5.7% (HIGH)", technician: "Khadra Yusuf", status: "completed", date: "2026-06-14" },
+        { testName: "Urine Glucose", value: "4+", range: "Negative", technician: "Lab Tech Abdi", status: "completed", date: "2026-06-14" },
+        { testName: "Urine Ketones", value: "Negative", range: "Negative", technician: "Lab Tech Abdi", status: "completed", date: "2026-06-14" }
+      ]
+    },
+    {
+      visitNo: "VST-1007",
+      patientId: "PAT-2026-0009",
+      dateTime: "2026-06-15T09:30",
+      doctor: "Dr. Abdirahman Omar",
+      weight: 35,
+      height: 142,
+      bmi: 17.4,
+      bmiClass: "Normal",
+      bp: "108/68",
+      temp: 36.9,
+      symptoms: "Recurrent headaches, poor concentration, occasional dizziness.",
+      diagnosis: "Migraine Disorder with Tension Headaches",
+      treatment: "Ibuprofen 200mg as needed, preventive counseling.",
+      notes: "Refer to neurology if migraines persist despite lifestyle modifications.",
+      prescriptions: [
+        { drug: "Ibuprofen 200mg", dosage: "200mg", frequency: "As needed", duration: "30 days" },
+        { drug: "Vitamin D3 1000IU", dosage: "1000IU", frequency: "Once Daily", duration: "90 days" }
+      ],
+      labOrdered: "Complete Blood Count, Metabolic Panel, Vitamin Levels",
+      labResults: [
+        { testName: "Hemoglobin", value: "13.5 g/dL", range: "12.0 - 16.0 g/dL", technician: "Lab Tech Hassan", status: "completed", date: "2026-06-15" },
+        { testName: "WBC Count", value: "6.8 x10^9/L", range: "4.0 - 11.0 x10^9/L", technician: "Lab Tech Hassan", status: "completed", date: "2026-06-15" },
+        { testName: "Vitamin D Level", value: "22 ng/mL", range: "30 - 100 ng/mL (LOW)", technician: "Lab Tech Hassan", status: "completed", date: "2026-06-15" }
       ]
     }
   ],
@@ -133,7 +313,15 @@ const DEFAULT_SEED_DATABASE = {
     { id: "APT-201", patientId: "PAT-2026-0001", patientName: "Mohamed Ali Barre", date: "2026-06-12", time: "10:00", doctor: "Dr. Abdirahman Omar", status: "Completed" },
     { id: "APT-202", patientId: "PAT-2026-0004", patientName: "Ahmed Abdi Gure", date: "2026-06-12", time: "11:30", doctor: "Dr. Abdirahman Omar", status: "Waiting" },
     { id: "APT-203", patientId: "PAT-2026-0005", patientName: "Maryam Yusuf Garaad", date: "2026-06-12", time: "14:00", doctor: "Dr. Sarah Ahmed", status: "Scheduled" },
-    { id: "APT-204", patientId: "PAT-2026-0002", patientName: "Sarah Ahmed Kamau", date: "2026-06-13", time: "09:00", doctor: "Dr. Sarah Ahmed", status: "Scheduled" }
+    { id: "APT-204", patientId: "PAT-2026-0002", patientName: "Sarah Ahmed Kamau", date: "2026-06-13", time: "09:00", doctor: "Dr. Sarah Ahmed", status: "Scheduled" },
+    { id: "APT-205", patientId: "PAT-2026-0006", patientName: "Hassan Ibrahim Abdi", date: "2026-06-13", time: "11:00", doctor: "Dr. Sarah Ahmed", status: "Completed" },
+    { id: "APT-206", patientId: "PAT-2026-0007", patientName: "Zahra Mohamed Hassan", date: "2026-06-13", time: "13:30", doctor: "Dr. Abdirahman Omar", status: "Completed" },
+    { id: "APT-207", patientId: "PAT-2026-0008", patientName: "Khalid Yusuf Omar", date: "2026-06-14", time: "10:15", doctor: "Dr. Sarah Ahmed", status: "Completed" },
+    { id: "APT-208", patientId: "PAT-2026-0009", patientName: "Amira Abdullah Hassan", date: "2026-06-14", time: "15:00", doctor: "Dr. Abdirahman Omar", status: "Scheduled" },
+    { id: "APT-209", patientId: "PAT-2026-0010", patientName: "Omar Farah Mohamed", date: "2026-06-15", time: "09:00", doctor: "Dr. Sarah Ahmed", status: "Scheduled" },
+    { id: "APT-210", patientId: "PAT-2026-0011", patientName: "Noor Abdi Hassan", date: "2026-06-15", time: "11:30", doctor: "Dr. Abdirahman Omar", status: "Waiting" },
+    { id: "APT-211", patientId: "PAT-2026-0012", patientName: "Ali Mohamed Salim", date: "2026-06-16", time: "10:00", doctor: "Dr. Sarah Ahmed", status: "Scheduled" },
+    { id: "APT-212", patientId: "PAT-2026-0003", patientName: "Fatma Hassan Al-Harbi", date: "2026-06-16", time: "14:30", doctor: "Dr. Abdirahman Omar", status: "Scheduled" }
   ],
   inventory: [
     { id: "INV-101", drug: "Paracetamol 500mg tablets", stock: 2400, reorder: 500, unit: "tablets" },
@@ -142,17 +330,30 @@ const DEFAULT_SEED_DATABASE = {
     { id: "INV-104", drug: "Metformin 500mg tablets", stock: 1500, reorder: 400, unit: "tablets" },
     { id: "INV-105", drug: "Artemether/Lumefantrine (Coartem)", stock: 80, reorder: 20, unit: "packs" },
     { id: "INV-106", drug: "Paracetamol Suspension 120mg/5ml", stock: 45, reorder: 15, unit: "bottles" },
-    { id: "INV-107", drug: "Amoxicillin Suspension 250mg/5ml", stock: 8, reorder: 20, unit: "bottles" }
+    { id: "INV-107", drug: "Amoxicillin Suspension 250mg/5ml", stock: 8, reorder: 20, unit: "bottles" },
+    { id: "INV-108", drug: "Ibuprofen 200mg tablets", stock: 1800, reorder: 400, unit: "tablets" },
+    { id: "INV-109", drug: "Lisinopril 10mg tablets", stock: 600, reorder: 200, unit: "tablets" },
+    { id: "INV-110", drug: "Atorvastatin 20mg tablets", stock: 720, reorder: 200, unit: "tablets" },
+    { id: "INV-111", drug: "Glipizide 5mg tablets", stock: 540, reorder: 180, unit: "tablets" },
+    { id: "INV-112", drug: "Ferrous Sulfate 325mg tablets", stock: 1200, reorder: 300, unit: "tablets" },
+    { id: "INV-113", drug: "Vitamin B12 1000mcg injectables", stock: 48, reorder: 24, unit: "vials" }
   ],
   billing: [
-    { invoiceNo: "INV-5001", patientId: "PAT-2026-0001", patientName: "Mohamed Ali Barre", date: "2026-06-01", services: "Consultation, Lipid Lab Profile", amount: 45, status: "Paid" },
-    { invoiceNo: "INV-5002", patientId: "PAT-2026-0003", patientName: "Fatma Hassan Al-Harbi", date: "2026-06-10", services: "Paediatric Consultation, Amoxicillin Susp", amount: 27, status: "Paid" },
-    { invoiceNo: "INV-5003", patientId: "PAT-2026-0004", patientName: "Ahmed Abdi Gure", date: "2026-06-12", services: "Consultation, Malaria RDT Panel", amount: 30, status: "Pending" }
+    { invoiceNo: "INV-5001", patientId: "PAT-2026-0001", patientName: "Mohamed Ali Barre", date: "2026-06-01", services: "Consultation, Lipid Lab Profile, Fasting Blood Glucose", amount: 55, status: "Paid" },
+    { invoiceNo: "INV-5002", patientId: "PAT-2026-0003", patientName: "Fatma Hassan Al-Harbi", date: "2026-06-10", services: "Paediatric Consultation, Amoxicillin Susp, Throat Culture", amount: 38, status: "Paid" },
+    { invoiceNo: "INV-5003", patientId: "PAT-2026-0004", patientName: "Ahmed Abdi Gure", date: "2026-06-12", services: "Consultation, Malaria RDT Panel, CBC", amount: 45, status: "Paid" },
+    { invoiceNo: "INV-5004", patientId: "PAT-2026-0006", patientName: "Hassan Ibrahim Abdi", date: "2026-06-11", services: "Consultation, Lipid Panel, ECG, Troponin Test", amount: 85, status: "Paid" },
+    { invoiceNo: "INV-5005", patientId: "PAT-2026-0007", patientName: "Zahra Mohamed Hassan", date: "2026-06-13", services: "Consultation, Iron Panel, Thyroid Profile, Anemia Management", amount: 62, status: "Paid" },
+    { invoiceNo: "INV-5006", patientId: "PAT-2026-0008", patientName: "Khalid Yusuf Omar", date: "2026-06-14", services: "Consultation, Glucose Test, HbA1c, Urine Analysis", amount: 68, status: "Pending" },
+    { invoiceNo: "INV-5007", patientId: "PAT-2026-0009", patientName: "Amira Abdullah Hassan", date: "2026-06-15", services: "Pediatric Consultation, Migraine Management, Vitamin Supplementation", amount: 42, status: "Pending" }
   ],
   auditLogs: [
-    { timestamp: "2026-06-12T08:00", user: "system", action: "System initiated & database initialized." },
+    { timestamp: "2026-06-12T08:00", user: "system", action: "System initiated & database initialized with expanded patient registry." },
     { timestamp: "2026-06-12T08:45", user: "reception", action: "Recorded initial triage vitals for PAT-2026-0004" },
-    { timestamp: "2026-06-12T09:00", user: "doctor", action: "Diagnosed patient PAT-2026-0004, requested Malaria Rapid Test" }
+    { timestamp: "2026-06-12T09:00", user: "doctor", action: "Diagnosed patient PAT-2026-0004, requested Malaria Rapid Test" },
+    { timestamp: "2026-06-13T10:00", user: "reception", action: "Registered new patients: PAT-2026-0006 through PAT-2026-0012" },
+    { timestamp: "2026-06-13T14:30", user: "lab", action: "Completed lab results for VST-1005 (Anemia workup)" },
+    { timestamp: "2026-06-14T09:00", user: "doctor", action: "Reviewed diabetes screening labs for PAT-2026-0008" }
   ]
 };
 
