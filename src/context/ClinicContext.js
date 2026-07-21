@@ -4,6 +4,18 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const ClinicContext = createContext();
 
+const getTodayDateStr = (offsetDays = 0) => {
+  const d = new Date();
+  d.setDate(d.getDate() + offsetDays);
+  return d.toISOString().split('T')[0];
+};
+
+const getTodayDateTimeStr = (offsetDays = 0, timeStr = "10:30") => {
+  const d = new Date();
+  d.setDate(d.getDate() + offsetDays);
+  return `${d.toISOString().split('T')[0]}T${timeStr}`;
+};
+
 const DEFAULT_SEED_DATABASE = {
   patients: [
     {
@@ -131,7 +143,7 @@ const DEFAULT_SEED_DATABASE = {
     {
       visitNo: "VST-1001",
       patientId: "PAT-2026-0001",
-      dateTime: "2026-06-01T10:30",
+      dateTime: getTodayDateTimeStr(-11, "10:30"),
       doctor: "Dr. Abdirahman Omar",
       weight: 82,
       height: 175,
@@ -148,15 +160,15 @@ const DEFAULT_SEED_DATABASE = {
       ],
       labOrdered: "Lipid Profile, Renal Function Test, Fasting Blood Glucose",
       labResults: [
-        { testName: "Serum Cholesterol", value: "220 mg/dL", range: "70 - 200 mg/dL", technician: "Khadra Yusuf", status: "completed", date: "2026-06-02" },
-        { testName: "Serum Creatinine", value: "0.9 mg/dL", range: "0.6 - 1.2 mg/dL", technician: "Khadra Yusuf", status: "completed", date: "2026-06-02" },
-        { testName: "Fasting Blood Glucose", value: "110 mg/dL", range: "70 - 100 mg/dL (HIGH)", technician: "Khadra Yusuf", status: "completed", date: "2026-06-02" }
+        { testName: "Serum Cholesterol", value: "220 mg/dL", range: "70 - 200 mg/dL", technician: "Khadra Yusuf", status: "completed", date: getTodayDateStr(-10) },
+        { testName: "Serum Creatinine", value: "0.9 mg/dL", range: "0.6 - 1.2 mg/dL", technician: "Khadra Yusuf", status: "completed", date: getTodayDateStr(-10) },
+        { testName: "Fasting Blood Glucose", value: "110 mg/dL", range: "70 - 100 mg/dL (HIGH)", technician: "Khadra Yusuf", status: "completed", date: getTodayDateStr(-10) }
       ]
     },
     {
       visitNo: "VST-1002",
       patientId: "PAT-2026-0003",
-      dateTime: "2026-06-10T09:15",
+      dateTime: getTodayDateTimeStr(-2, "09:15"),
       doctor: "Dr. Sarah Ahmed",
       weight: 20,
       height: 112,
@@ -174,14 +186,14 @@ const DEFAULT_SEED_DATABASE = {
       ],
       labOrdered: "Complete Blood Count, Throat Culture",
       labResults: [
-        { testName: "WBC count", value: "14.2 x10^9/L", range: "4.0 - 11.0 x10^9/L (HIGH)", technician: "Khadra Yusuf", status: "completed", date: "2026-06-10" },
-        { testName: "Throat Culture", value: "Streptococcus pyogenes", range: "Negative", technician: "Lab Tech Abdi", status: "completed", date: "2026-06-11" }
+        { testName: "WBC count", value: "14.2 x10^9/L", range: "4.0 - 11.0 x10^9/L (HIGH)", technician: "Khadra Yusuf", status: "completed", date: getTodayDateStr(-2) },
+        { testName: "Throat Culture", value: "Streptococcus pyogenes", range: "Negative", technician: "Lab Tech Abdi", status: "completed", date: getTodayDateStr(-1) }
       ]
     },
     {
       visitNo: "VST-1003",
       patientId: "PAT-2026-0004",
-      dateTime: "2026-06-12T08:45",
+      dateTime: getTodayDateTimeStr(-1, "08:45"),
       doctor: "Dr. Abdirahman Omar",
       weight: 74,
       height: 180,
@@ -196,15 +208,15 @@ const DEFAULT_SEED_DATABASE = {
       prescriptions: [],
       labOrdered: "Malaria Rapid Test, Complete Blood Count, Hepatic Panel",
       labResults: [
-        { testName: "Malaria Rapid Test", value: "Positive", range: "Negative", technician: "Lab Tech Hassan", status: "completed", date: "2026-06-12" },
-        { testName: "Complete Blood Count", value: "WBC 16.5 x10^9/L", range: "Routine profile", technician: "Lab Tech Hassan", status: "completed", date: "2026-06-12" },
-        { testName: "Hemoglobin", value: "13.2 g/dL", range: "13.5 - 17.5 g/dL (LOW)", technician: "Lab Tech Hassan", status: "completed", date: "2026-06-12" }
+        { testName: "Malaria Rapid Test", value: "Positive", range: "Negative", technician: "Lab Tech Hassan", status: "completed", date: getTodayDateStr(-1) },
+        { testName: "Complete Blood Count", value: "WBC 16.5 x10^9/L", range: "Routine profile", technician: "Lab Tech Hassan", status: "completed", date: getTodayDateStr(-1) },
+        { testName: "Hemoglobin", value: "13.2 g/dL", range: "13.5 - 17.5 g/dL (LOW)", technician: "Lab Tech Hassan", status: "completed", date: getTodayDateStr(-1) }
       ]
     },
     {
       visitNo: "VST-1004",
       patientId: "PAT-2026-0006",
-      dateTime: "2026-06-11T14:30",
+      dateTime: getTodayDateTimeStr(-1, "14:30"),
       doctor: "Dr. Sarah Ahmed",
       weight: 88,
       height: 178,
@@ -222,16 +234,16 @@ const DEFAULT_SEED_DATABASE = {
       ],
       labOrdered: "Lipid Panel, ECG, Troponin Test, Complete Blood Count",
       labResults: [
-        { testName: "Total Cholesterol", value: "265 mg/dL", range: "< 200 mg/dL (HIGH)", technician: "Khadra Yusuf", status: "completed", date: "2026-06-12" },
-        { testName: "LDL Cholesterol", value: "180 mg/dL", range: "< 100 mg/dL (HIGH)", technician: "Khadra Yusuf", status: "completed", date: "2026-06-12" },
-        { testName: "HDL Cholesterol", value: "35 mg/dL", range: "> 40 mg/dL (LOW)", technician: "Khadra Yusuf", status: "completed", date: "2026-06-12" },
-        { testName: "Troponin", value: "Negative", range: "Negative", technician: "Lab Tech Abdi", status: "completed", date: "2026-06-12" }
+        { testName: "Total Cholesterol", value: "265 mg/dL", range: "< 200 mg/dL (HIGH)", technician: "Khadra Yusuf", status: "completed", date: getTodayDateStr(-1) },
+        { testName: "LDL Cholesterol", value: "180 mg/dL", range: "< 100 mg/dL (HIGH)", technician: "Khadra Yusuf", status: "completed", date: getTodayDateStr(-1) },
+        { testName: "HDL Cholesterol", value: "35 mg/dL", range: "> 40 mg/dL (LOW)", technician: "Khadra Yusuf", status: "completed", date: getTodayDateStr(-1) },
+        { testName: "Troponin", value: "Negative", range: "Negative", technician: "Lab Tech Abdi", status: "completed", date: getTodayDateStr(-1) }
       ]
     },
     {
       visitNo: "VST-1005",
       patientId: "PAT-2026-0007",
-      dateTime: "2026-06-13T11:00",
+      dateTime: getTodayDateTimeStr(0, "11:00"),
       doctor: "Dr. Abdirahman Omar",
       weight: 58,
       height: 165,
@@ -249,16 +261,16 @@ const DEFAULT_SEED_DATABASE = {
       ],
       labOrdered: "Complete Blood Count, Iron Panel, Thyroid Profile",
       labResults: [
-        { testName: "Hemoglobin", value: "8.5 g/dL", range: "12.0 - 16.0 g/dL (LOW)", technician: "Lab Tech Hassan", status: "completed", date: "2026-06-13" },
-        { testName: "Serum Iron", value: "45 mcg/dL", range: "60 - 170 mcg/dL (LOW)", technician: "Lab Tech Hassan", status: "completed", date: "2026-06-13" },
-        { testName: "Ferritin", value: "12 ng/mL", range: "30 - 400 ng/mL (LOW)", technician: "Lab Tech Hassan", status: "completed", date: "2026-06-13" },
-        { testName: "TSH", value: "2.1 mIU/L", range: "0.4 - 4.0 mIU/L", technician: "Lab Tech Hassan", status: "completed", date: "2026-06-13" }
+        { testName: "Hemoglobin", value: "8.5 g/dL", range: "12.0 - 16.0 g/dL (LOW)", technician: "Lab Tech Hassan", status: "completed", date: getTodayDateStr(0) },
+        { testName: "Serum Iron", value: "45 mcg/dL", range: "60 - 170 mcg/dL (LOW)", technician: "Lab Tech Hassan", status: "completed", date: getTodayDateStr(0) },
+        { testName: "Ferritin", value: "12 ng/mL", range: "30 - 400 ng/mL (LOW)", technician: "Lab Tech Hassan", status: "completed", date: getTodayDateStr(0) },
+        { testName: "TSH", value: "2.1 mIU/L", range: "0.4 - 4.0 mIU/L", technician: "Lab Tech Hassan", status: "completed", date: getTodayDateStr(0) }
       ]
     },
     {
       visitNo: "VST-1006",
       patientId: "PAT-2026-0008",
-      dateTime: "2026-06-14T10:15",
+      dateTime: getTodayDateTimeStr(0, "10:15"),
       doctor: "Dr. Sarah Ahmed",
       weight: 92,
       height: 182,
@@ -276,16 +288,16 @@ const DEFAULT_SEED_DATABASE = {
       ],
       labOrdered: "Fasting Blood Glucose, HbA1c, Lipid Panel, Kidney Function",
       labResults: [
-        { testName: "Fasting Blood Glucose", value: "285 mg/dL", range: "70 - 100 mg/dL (HIGH)", technician: "Khadra Yusuf", status: "completed", date: "2026-06-14" },
-        { testName: "HbA1c", value: "9.8%", range: "< 5.7% (HIGH)", technician: "Khadra Yusuf", status: "completed", date: "2026-06-14" },
-        { testName: "Urine Glucose", value: "4+", range: "Negative", technician: "Lab Tech Abdi", status: "completed", date: "2026-06-14" },
-        { testName: "Urine Ketones", value: "Negative", range: "Negative", technician: "Lab Tech Abdi", status: "completed", date: "2026-06-14" }
+        { testName: "Fasting Blood Glucose", value: "285 mg/dL", range: "70 - 100 mg/dL (HIGH)", technician: "Khadra Yusuf", status: "completed", date: getTodayDateStr(0) },
+        { testName: "HbA1c", value: "9.8%", range: "< 5.7% (HIGH)", technician: "Khadra Yusuf", status: "completed", date: getTodayDateStr(0) },
+        { testName: "Urine Glucose", value: "4+", range: "Negative", technician: "Lab Tech Abdi", status: "completed", date: getTodayDateStr(0) },
+        { testName: "Urine Ketones", value: "Negative", range: "Negative", technician: "Lab Tech Abdi", status: "completed", date: getTodayDateStr(0) }
       ]
     },
     {
       visitNo: "VST-1007",
       patientId: "PAT-2026-0009",
-      dateTime: "2026-06-15T09:30",
+      dateTime: getTodayDateTimeStr(0, "09:30"),
       doctor: "Dr. Abdirahman Omar",
       weight: 35,
       height: 142,
@@ -303,25 +315,69 @@ const DEFAULT_SEED_DATABASE = {
       ],
       labOrdered: "Complete Blood Count, Metabolic Panel, Vitamin Levels",
       labResults: [
-        { testName: "Hemoglobin", value: "13.5 g/dL", range: "12.0 - 16.0 g/dL", technician: "Lab Tech Hassan", status: "completed", date: "2026-06-15" },
-        { testName: "WBC Count", value: "6.8 x10^9/L", range: "4.0 - 11.0 x10^9/L", technician: "Lab Tech Hassan", status: "completed", date: "2026-06-15" },
-        { testName: "Vitamin D Level", value: "22 ng/mL", range: "30 - 100 ng/mL (LOW)", technician: "Lab Tech Hassan", status: "completed", date: "2026-06-15" }
+        { testName: "Hemoglobin", value: "13.5 g/dL", range: "12.0 - 16.0 g/dL", technician: "Lab Tech Hassan", status: "completed", date: getTodayDateStr(0) },
+        { testName: "WBC Count", value: "6.8 x10^9/L", range: "4.0 - 11.0 x10^9/L", technician: "Lab Tech Hassan", status: "completed", date: getTodayDateStr(0) },
+        { testName: "Vitamin D Level", value: "22 ng/mL", range: "30 - 100 ng/mL (LOW)", technician: "Lab Tech Hassan", status: "completed", date: getTodayDateStr(0) }
+      ]
+    },
+    {
+      visitNo: "VST-1008",
+      patientId: "PAT-2026-0002",
+      dateTime: getTodayDateTimeStr(0, "08:15"),
+      doctor: "Dr. Abdirahman Omar",
+      weight: 65,
+      height: 168,
+      bmi: 23.0,
+      bmiClass: "Normal",
+      bp: "120/80",
+      temp: 38.5,
+      symptoms: "Fatigue, mild abdominal cramps, fever.",
+      diagnosis: "",
+      treatment: "",
+      notes: "",
+      prescriptions: [],
+      labOrdered: "Complete Blood Count, Fasting Blood Sugar",
+      labResults: [
+        { testName: "Complete Blood Count", value: "", range: "4.0 - 11.0 x10^9/L", technician: "", status: "pending", date: "" },
+        { testName: "Fasting Blood Sugar", value: "", range: "70 - 100 mg/dL", technician: "", status: "pending", date: "" }
+      ]
+    },
+    {
+      visitNo: "VST-1009",
+      patientId: "PAT-2026-0005",
+      dateTime: getTodayDateTimeStr(0, "09:00"),
+      doctor: "Dr. Sarah Ahmed",
+      weight: 60,
+      height: 162,
+      bmi: 22.9,
+      bmiClass: "Normal",
+      bp: "130/85",
+      temp: 37.0,
+      symptoms: "Fatigue, joint stiffness, generalized weakness.",
+      diagnosis: "",
+      treatment: "",
+      notes: "",
+      prescriptions: [],
+      labOrdered: "Complete Blood Count, Rheumatoid Factor",
+      labResults: [
+        { testName: "Complete Blood Count", value: "4.5 x10^9/L", range: "4.0 - 11.0 x10^9/L", technician: "Khadra Yusuf", status: "completed", date: getTodayDateStr(0) },
+        { testName: "Rheumatoid Factor", value: "Positive (High)", range: "Negative", technician: "Khadra Yusuf", status: "completed", date: getTodayDateStr(0) }
       ]
     }
   ],
   appointments: [
-    { id: "APT-201", patientId: "PAT-2026-0001", patientName: "Mohamed Ali Barre", date: "2026-06-12", time: "10:00", doctor: "Dr. Abdirahman Omar", status: "Completed" },
-    { id: "APT-202", patientId: "PAT-2026-0004", patientName: "Ahmed Abdi Gure", date: "2026-06-12", time: "11:30", doctor: "Dr. Abdirahman Omar", status: "Waiting" },
-    { id: "APT-203", patientId: "PAT-2026-0005", patientName: "Maryam Yusuf Garaad", date: "2026-06-12", time: "14:00", doctor: "Dr. Sarah Ahmed", status: "Scheduled" },
-    { id: "APT-204", patientId: "PAT-2026-0002", patientName: "Sarah Ahmed Kamau", date: "2026-06-13", time: "09:00", doctor: "Dr. Sarah Ahmed", status: "Scheduled" },
-    { id: "APT-205", patientId: "PAT-2026-0006", patientName: "Hassan Ibrahim Abdi", date: "2026-06-13", time: "11:00", doctor: "Dr. Sarah Ahmed", status: "Completed" },
-    { id: "APT-206", patientId: "PAT-2026-0007", patientName: "Zahra Mohamed Hassan", date: "2026-06-13", time: "13:30", doctor: "Dr. Abdirahman Omar", status: "Completed" },
-    { id: "APT-207", patientId: "PAT-2026-0008", patientName: "Khalid Yusuf Omar", date: "2026-06-14", time: "10:15", doctor: "Dr. Sarah Ahmed", status: "Completed" },
-    { id: "APT-208", patientId: "PAT-2026-0009", patientName: "Amira Abdullah Hassan", date: "2026-06-14", time: "15:00", doctor: "Dr. Abdirahman Omar", status: "Scheduled" },
-    { id: "APT-209", patientId: "PAT-2026-0010", patientName: "Omar Farah Mohamed", date: "2026-06-15", time: "09:00", doctor: "Dr. Sarah Ahmed", status: "Scheduled" },
-    { id: "APT-210", patientId: "PAT-2026-0011", patientName: "Noor Abdi Hassan", date: "2026-06-15", time: "11:30", doctor: "Dr. Abdirahman Omar", status: "Waiting" },
-    { id: "APT-211", patientId: "PAT-2026-0012", patientName: "Ali Mohamed Salim", date: "2026-06-16", time: "10:00", doctor: "Dr. Sarah Ahmed", status: "Scheduled" },
-    { id: "APT-212", patientId: "PAT-2026-0003", patientName: "Fatma Hassan Al-Harbi", date: "2026-06-16", time: "14:30", doctor: "Dr. Abdirahman Omar", status: "Scheduled" }
+    { id: "APT-201", patientId: "PAT-2026-0001", patientName: "Mohamed Ali Barre", date: getTodayDateStr(-11), time: "10:00", doctor: "Dr. Abdirahman Omar", status: "Completed" },
+    { id: "APT-202", patientId: "PAT-2026-0004", patientName: "Ahmed Abdi Gure", date: getTodayDateStr(-1), time: "11:30", doctor: "Dr. Abdirahman Omar", status: "Waiting" },
+    { id: "APT-203", patientId: "PAT-2026-0005", patientName: "Maryam Yusuf Garaad", date: getTodayDateStr(0), time: "14:00", doctor: "Dr. Sarah Ahmed", status: "Waiting" },
+    { id: "APT-204", patientId: "PAT-2026-0002", patientName: "Sarah Ahmed Kamau", date: getTodayDateStr(0), time: "09:00", doctor: "Dr. Abdirahman Omar", status: "Waiting" },
+    { id: "APT-205", patientId: "PAT-2026-0006", patientName: "Hassan Ibrahim Abdi", date: getTodayDateStr(-1), time: "11:00", doctor: "Dr. Sarah Ahmed", status: "Completed" },
+    { id: "APT-206", patientId: "PAT-2026-0007", patientName: "Zahra Mohamed Hassan", date: getTodayDateStr(0), time: "13:30", doctor: "Dr. Abdirahman Omar", status: "Completed" },
+    { id: "APT-207", patientId: "PAT-2026-0008", patientName: "Khalid Yusuf Omar", date: getTodayDateStr(0), time: "10:15", doctor: "Dr. Sarah Ahmed", status: "Completed" },
+    { id: "APT-208", patientId: "PAT-2026-0009", patientName: "Amira Abdullah Hassan", date: getTodayDateStr(0), time: "15:00", doctor: "Dr. Abdirahman Omar", status: "Scheduled" },
+    { id: "APT-209", patientId: "PAT-2026-0010", patientName: "Omar Farah Mohamed", date: getTodayDateStr(1), time: "09:00", doctor: "Dr. Sarah Ahmed", status: "Scheduled" },
+    { id: "APT-210", patientId: "PAT-2026-0011", patientName: "Noor Abdi Hassan", date: getTodayDateStr(1), time: "11:30", doctor: "Dr. Abdirahman Omar", status: "Waiting" },
+    { id: "APT-211", patientId: "PAT-2026-0012", patientName: "Ali Mohamed Salim", date: getTodayDateStr(2), time: "10:00", doctor: "Dr. Sarah Ahmed", status: "Scheduled" },
+    { id: "APT-212", patientId: "PAT-2026-0003", patientName: "Fatma Hassan Al-Harbi", date: getTodayDateStr(2), time: "14:30", doctor: "Dr. Abdirahman Omar", status: "Scheduled" }
   ],
   inventory: [
     { id: "INV-101", drug: "Paracetamol 500mg tablets", stock: 2400, reorder: 500, unit: "tablets" },
