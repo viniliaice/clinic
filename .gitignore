@@ -4,6 +4,9 @@ node_modules
 # Next.js build output
 .next
 
+# Local config and runtime data
+.config
+
 # Local environment variables
 .env*
 
