@@ -1,0 +1,13 @@
+
+> alshifa-clinic-cms@1.0.0 dev
+> next dev
+
+  ▲ Next.js 14.2.3
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+ ✓ Ready in 1634ms
+ ○ Compiling / ...
+ ✓ Compiled / in 6.5s (595 modules)
+ GET / 200 in 7385ms
+ ✓ Compiled in 831ms (304 modules)
