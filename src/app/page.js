@@ -400,7 +400,7 @@ export default function HomePage() {
         <Header />
 
         {/* Workspace body */}
-        <main className="p-6 max-w-7xl w-full mx-auto flex-1 pb-16">
+        <main className="p-4 md:p-6 max-w-7xl w-full mx-auto flex-1 pb-16">
           {renderTabContent()}
         </main>
       </div>
@@ -484,7 +484,7 @@ export default function HomePage() {
                   type="submit"
                   className="flex-1 bg-teal-700 hover:bg-teal-800 text-white font-bold p-3 rounded-lg text-sm"
                 >
-                  Send to Doctor's Queue
+                  Send to Doctor&apos;s Queue
                 </button>
                 <button
                   type="button"

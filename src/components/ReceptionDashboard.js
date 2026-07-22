@@ -44,7 +44,7 @@ export default function ReceptionDashboard() {
 
         <div className="bg-white dark:bg-slate-800 p-5 rounded-xl border dark:border-slate-700 shadow-sm flex items-center justify-between">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Today's Appointments</span>
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Today&apos;s Appointments</span>
             <p className="text-3xl font-bold text-emerald-600 dark:text-emerald-400 mt-1">{todayAppointments}</p>
           </div>
           <div className="bg-emerald-50 dark:bg-emerald-950/40 p-3 rounded-lg text-emerald-600 dark:text-emerald-400">
@@ -80,7 +80,7 @@ export default function ReceptionDashboard() {
       {/* Today's Appointments List */}
       <div className="bg-white dark:bg-slate-800 rounded-xl border dark:border-slate-700 shadow-sm overflow-hidden">
         <div className="p-5 border-b dark:border-slate-700 flex justify-between items-center bg-slate-50/50 dark:bg-slate-800/50">
-          <h3 className="font-bold">Today's Appointment Schedule ({todayStr})</h3>
+          <h3 className="font-bold">Today&apos;s Appointment Schedule ({todayStr})</h3>
         </div>
         <div className="overflow-x-auto w-full">
           <table className="w-full text-left text-sm border-collapse">

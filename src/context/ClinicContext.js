@@ -366,6 +366,7 @@ export function ClinicProvider({ children }) {
   const [syncPendingCount, setSyncPendingCount] = useState(0);
   const [activePatientId, setActivePatientId] = useState(null);
   const [currentTab, setCurrentTab] = useState('dashboard');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [db, setDb] = useState(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('clinic_db_next');
@@ -637,7 +638,7 @@ export function ClinicProvider({ children }) {
   return (
     <ClinicContext.Provider value={{
       currentUserRole, currentLanguage, theme, isEncrypted, isOffline, syncPendingCount,
-      activePatientId, setActivePatientId, currentTab, setCurrentTab, db, toasts,
+      activePatientId, setActivePatientId, currentTab, setCurrentTab, isSidebarOpen, setIsSidebarOpen, db, toasts,
       login, logout, changeLanguage, toggleTheme, toggleOffline, toggleEncryption,
       registerPatient, queueVisit, saveConsultation, updatePatientDemographics,
       enterLabResults, addInventoryItem, addInventoryStock, processPayment, createAppointment,

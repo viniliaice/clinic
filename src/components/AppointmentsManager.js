@@ -215,10 +215,10 @@ export default function AppointmentsManager() {
               <p className="text-sm text-slate-500">This JSON payload represents a secure cloud-bound POST integration dispatch mapping details of the appointment:</p>
               
               <div className="bg-slate-900 text-emerald-400 font-mono text-xs p-4 rounded-lg overflow-x-auto select-all">
-                <span className="text-slate-500">// HTTP Gateway REST Payload Mapping</span>
+                <span className="text-slate-500">{"// HTTP Gateway REST Payload Mapping"}</span>
                 <p className="mt-1"><b>METHOD:</b> POST</p>
                 <p><b>URL:</b> {alertMethod === 'sms' ? 'https://gateway.shifasms.com/v1/send' : 'https://api.whatsapp.com/v1/messages'}</p>
-                <p><b>HEADERS:</b> &#123; "Authorization": "Bearer key_shifa_secure_v2026" &#125;</p>
+                <p><b>HEADERS:</b> &#123; &quot;Authorization&quot;: &quot;Bearer key_shifa_secure_v2026&quot; &#125;</p>
                 <p className="mt-2"><b>BODY JSON:</b></p>
                 <pre className="mt-1 leading-relaxed">
                   {JSON.stringify({
