@@ -10,11 +10,12 @@ import {
   Package, 
   BarChart3, 
   ShieldAlert, 
-  LogOut 
+  LogOut,
+  X
 } from 'lucide-react';
 
 export default function Sidebar() {
-  const { currentUserRole, currentTab, setCurrentTab, logout, setActivePatientId, maskText, t } = useClinic();
+  const { currentUserRole, currentTab, setCurrentTab, logout, setActivePatientId, maskText, t, isSidebarOpen, setIsSidebarOpen } = useClinic();
 
   const getMenuItems = () => {
     if (currentUserRole === 'reception') {
@@ -48,18 +49,36 @@ export default function Sidebar() {
   const handleMenuClick = (tabId) => {
     setCurrentTab(tabId);
     setActivePatientId(null);
+    setIsSidebarOpen(false);
   };
 
   const menuItems = getMenuItems();
 
   return (
-    <aside className="w-68 bg-white dark:bg-slate-800 border-r dark:border-slate-700 flex flex-col no-print h-full min-h-screen">
-      <div className="p-6 border-b dark:border-slate-700 flex items-center gap-3 text-teal-700 dark:text-teal-400 font-bold text-lg">
-        <svg className="w-8 h-8 fill-current" viewBox="0 0 24 24">
-          <path d="M19 10.5h-5.5V5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v5.5H5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5h5.5V19c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-5.5H19c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
-        </svg>
-        <span>Al-Shifa Clinic</span>
-      </div>
+    <>
+      {/* Backdrop overlay for mobile */}
+      {isSidebarOpen && (
+        <div
+          onClick={() => setIsSidebarOpen(false)}
+          className="fixed inset-0 z-30 bg-black/50 lg:hidden"
+        />
+      )}
+      <aside className={`fixed inset-y-0 left-0 z-40 w-68 bg-white dark:bg-slate-800 border-r dark:border-slate-700 flex flex-col no-print h-full min-h-screen transform transition-transform duration-300 ease-in-out lg:static lg:translate-x-0 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+        <div className="p-6 border-b dark:border-slate-700 flex items-center justify-between text-teal-700 dark:text-teal-400 font-bold text-lg">
+          <div className="flex items-center gap-3">
+            <svg className="w-8 h-8 fill-current" viewBox="0 0 24 24">
+              <path d="M19 10.5h-5.5V5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v5.5H5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5h5.5V19c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-5.5H19c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+            </svg>
+            <span>Al-Shifa Clinic</span>
+          </div>
+          <button
+            onClick={() => setIsSidebarOpen(false)}
+            className="lg:hidden p-1.5 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-700"
+            title="Close sidebar"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
 
       <div className="p-4 border-b dark:border-slate-700 bg-teal-50 dark:bg-slate-700/50">
         <div className="text-sm font-semibold truncate">
@@ -100,6 +119,7 @@ export default function Sidebar() {
           <span>Logout</span>
         </button>
       </div>
-    </aside>
+      </aside>
+    </>
   );
 }
